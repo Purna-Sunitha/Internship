@@ -27,3 +27,19 @@ Create one private hosted zone as dvstech.com and automate the registeration of 
 3. ⁠when ever we hit the load balancer with respective server name as context that server should respond
 4. ⁠proper architecture should be created for the same
 
+*Task7*
+1. Create one ec2 instance with new key pair
+2. ⁠login to server and create a folder called /opt/recovery 
+3. ⁠create a file called real-time.txt in recovery folder and write the content as I am pass … 
+4. ⁠capture the output of file 
+5. ⁠now go to your laptop and delete all the keys public,private and pem key 
+6. ⁠finally text me once u r done
+
+*Task8:*
+1. Create one ec2 instance and add a ebs volume in region1
+2. ⁠format the disk with LVM
+3. ⁠write data to the disk 
+4. ⁠now migrate the same server along with data to region2
+
+*Task9:*
+*Create a shell script which should create a user called automation in all servers passed in a file. Script should ask if the user should have username with password authentication or username with key based authentication. If it’s password based then it should ask to enter password and like wise if it’s key based then it should ask to enter the key. After providing these details user should get created in all the servers provided. Note: atleast keep 3 servers.*
