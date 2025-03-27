@@ -1,0 +1,47 @@
+*create a server from default vpc where subnet belongs to 1a and you should not pass the subnet value but you have to consume the existing values and built the server from subnet 1A zone. Name the server as task11-server1a*
+
+## main.tf ##
+# Fetch default VPC ID
+data "aws_vpc" "default_vpc" {
+  default = true
+}
+
+# Get the first subnet in the default VPC that belongs to the specified AZ
+data "aws_subnet" "selected_subnet" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default_vpc.id]
+  }
+
+  filter {
+    name   = "availability-zone"
+    values = [var.az]
+  }
+}
+
+# Create EC2 instance in the selected subnet
+resource "aws_instance" "myec2" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+  subnet_id     = data.aws_subnet.selected_subnet.id
+
+  tags = {
+    Name = var.instance_name
+  }
+}
+
+
+## variables.tf ##
+variable "ami_id" {}
+variable "instance_type" {}
+variable "key_name" {}
+variable "instance_name" {}
+variable "az" {}
+
+## vars.tfvars ##
+instance_type = "t2.micro"
+ami_id        = "ami-06661384e66f2da0e" 
+key_name      = "singapore-key" 
+instance_name = "task11_server1a"
+az            = "ap-southeast-1a"  
