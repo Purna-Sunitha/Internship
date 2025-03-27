@@ -43,3 +43,9 @@ Create one private hosted zone as dvstech.com and automate the registeration of 
 
 *Task9:*
 *Create a shell script which should create a user called automation in all servers passed in a file. Script should ask if the user should have username with password authentication or username with key based authentication. If it’s password based then it should ask to enter password and like wise if it’s key based then it should ask to enter the key. After providing these details user should get created in all the servers provided. Note: atleast keep 3 servers.*
+
+*Task10*
+*User the automation user created above and try to install Apache in the servers if Apache didn’t exists*
+
+* task11.1*
+*create a server from default vpc where subnet belongs to 1a and you should not pass the subnet value but you have to consume the existing values and built the server from subnet 1A zone. Name the server as task11-server1a*
