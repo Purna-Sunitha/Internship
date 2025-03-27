@@ -1,0 +1,38 @@
+## main.tf 
+
+data "aws_subnets" "selected" {
+  filter {
+    name   = "vpc-id"
+    values = [var.vpc_id]
+  }
+}
+
+resource "aws_instance" "servers" {
+  count         = 3
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  subnet_id     = element(data.aws_subnets.selected.ids, count.index)
+  key_name      = var.key_name
+  tags = {
+    Name = "server1${element(["a", "b", "c"], count.index)}"
+  }
+}
+
+##variables.tf
+
+  variable "ami_id" {}
+  
+  variable "instance_type" {}
+  
+  variable "vpc_id" {}
+
+  variable "key_name" {}
+
+##myvars.tfvars
+
+ami_id            = "ami-00ae2c3d8c3a99b55"
+instance_type     = "t2.micro"
+vpc_id            = "vpc-0bc584afcc9082e15"
+key_name          = "singapore-key"
+
+  
