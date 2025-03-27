@@ -49,3 +49,6 @@ Create one private hosted zone as dvstech.com and automate the registeration of 
 
 * task11.1*
 *create a server from default vpc where subnet belongs to 1a and you should not pass the subnet value but you have to consume the existing values and built the server from subnet 1A zone. Name the server as task11-server1a*
+
+*Task12*
+Create three servers with each in each availability zones like server1a,1b,1c
