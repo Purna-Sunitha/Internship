@@ -1,5 +1,7 @@
 Tasks:
 
+## AWS ##
+
 *Task1*
 *Automate the server hostname*
 Create server and set the server name in the the aws console. What ever the name you gave in the console same name have to set as hostname inside the server. This has to be automated no manual work.
@@ -41,14 +43,24 @@ Create one private hosted zone as dvstech.com and automate the registeration of 
 3. ⁠write data to the disk 
 4. ⁠now migrate the same server along with data to region2
 
+## SHELL SCRIPTING ##
+
 *Task9:*
 *Create a shell script which should create a user called automation in all servers passed in a file. Script should ask if the user should have username with password authentication or username with key based authentication. If it’s password based then it should ask to enter password and like wise if it’s key based then it should ask to enter the key. After providing these details user should get created in all the servers provided. Note: atleast keep 3 servers.*
 
 *Task10*
 *User the automation user created above and try to install Apache in the servers if Apache didn’t exists*
 
+### TERRAFORM ###
+
+*task11*
+*Create one server with IaC with name as task1-server1*
+
 * task11.1*
 *create a server from default vpc where subnet belongs to 1a and you should not pass the subnet value but you have to consume the existing values and built the server from subnet 1A zone. Name the server as task11-server1a*
 
 *Task12*
 Create three servers with each in each availability zones like server1a,1b,1c
+
+*Task13*
+Create a vpc with 9 subnets(6 private and 3 public). 3 types application, database and loadbalncer
