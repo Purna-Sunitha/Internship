@@ -63,4 +63,4 @@ Create one private hosted zone as dvstech.com and automate the registeration of 
 Create three servers with each in each availability zones like server1a,1b,1c
 
 *Task13*
-Create a vpc with 9 subnets(6 private and 3 public). 3 types application, database and loadbalncer
+Create a vpc with 9 subnets(6 private and 3 public). 3 types application, database and loadbalncer. Choose 3 avzs and names accordingly…
