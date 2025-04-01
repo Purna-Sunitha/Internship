@@ -43,10 +43,10 @@ resource "aws_subnet" "subnets" {
 
 resource "aws_route_table_association" "public_subnet_association" {
   for_each = { for subnet in var.subnets : subnet.name => subnet if subnet.type == "loadbalancer" }
-  
-  subnet_id      = lookup(aws_subnet.subnets, each.key, null).id
+  subnet_id      = aws_subnet.subnets[each.key].id
   route_table_id = aws_route_table.public_rt.id
-} 
+}
+
 
 resource "aws_lb" "main" {
   name               = "my-load-balancer"
