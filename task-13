@@ -47,7 +47,20 @@ resource "aws_route_table_association" "public_subnet_association" {
   route_table_id = aws_route_table.public_rt.id
 }
 
+resource "aws_route_table" "private_rt" {
+  vpc_id = aws_vpc.my-vpc.id
 
+  tags = {
+    Name = var.pri_rt
+  }
+}
+
+resource "aws_route_table_association" "private_subnet_association" {
+  for_each = { for subnet in var.subnets : subnet.name => subnet if subnet.type == "application" || subnet.type == "database" }
+
+  subnet_id      = aws_subnet.subnets[each.key].id
+  route_table_id = aws_route_table.private_rt.id
+}
 resource "aws_lb" "main" {
   name               = "my-load-balancer"
   internal           = false
@@ -90,6 +103,7 @@ variable "vpc_name" {}
 variable "igw_name" {}
 variable "rt_name"  {}
 variable "pub_rt_igw_access_cidr" {}
+variable "pri_rt" {}
 variable "lb_name" {}
 variable "sg_name" {}
 
@@ -114,6 +128,7 @@ vpc_name = "my-vpc"
 igw_name ="my-igw"
 rt_name  = "pub-route-table"
 pub_rt_igw_access_cidr = "0.0.0.0/0"
+pri_rt = "priv-route-table"
 lb_name = "my-alb"
 sg_name = "alb-sg"
 subnets = [
